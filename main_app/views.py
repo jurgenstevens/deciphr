@@ -9,4 +9,4 @@ def home(request):
     return HttpResponse('<h1>Welcome To Deciphr.</h1>')
 
 def about(request):
-    return HttpResponse('<h1>About Deciphr.</h1>')
+    return render(request, 'about.html')
