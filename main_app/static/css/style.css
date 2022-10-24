@@ -3,6 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     /* background-color: #3E92CC; */
+    font-family: 'Merriweather Sans', sans-serif;
     background-color: #2A628F;
 }
   
