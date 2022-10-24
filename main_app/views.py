@@ -13,7 +13,9 @@ class Song:
         self.attempted_lyrics = attempted_lyrics
 
 songs = [
-    Song('jurgensteves', 'Dejame En Paz', 'Holy Wave', 'Evil Hits', 'https://www.youtube.com/watch?v=-ZGrgna1s3s&ab_channel=HolyWave-Topic', 'N/A')
+    Song('jurgensteves', 'Dejame En Paz', 'Holy Wave', 'Evil Hits', 'https://www.youtube.com/watch?v=-ZGrgna1s3s&ab_channel=HolyWave-Topic', 'N/A'),
+    Song('jurgensteves', 'White Cat', 'White Fence', 'Cyclops Reap', 'https://www.youtube.com/watch?v=MGCquPuLkXY&ab_channel=dankpatrol', 'N/A'),
+    Song('jurgensteves', 'I Am Not A Game', 'Ty Segall & White Fence', 'Hair', 'https://www.youtube.com/watch?v=4DKjkkuSw7M&ab_channel=TySegall-Topic', 'N/A'),
 ]
 
 # Define the home view
