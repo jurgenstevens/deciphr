@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* background-color: #3E92CC; */
+    background-color: #2A628F;
+}
+  
+main {
+    flex: 1 0 auto;
+    color: azure;
+}
+
+.nav-wrapper {
+    background-color: #13293D;
+}
+  
+footer {
+    padding-top: 0;
+    text-align: right;
+}
+
+.page-footer {
+    background-color: #16324F;
+}
