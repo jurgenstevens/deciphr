@@ -21,10 +21,9 @@ songs = [
 
 # Define the home view
 def home(request):
-    return HttpResponse('<h1>Welcome To Deciphr.</h1>')
+    return render(request,'home.html')
 
 #  create an all_songs function here to attain all songs in the landing page!
-
 def about(request):
     return render(request, 'about.html')
 
