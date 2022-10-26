@@ -8,4 +8,8 @@ class Song(models.Model):
     album_name = models.CharField(max_length=100)
     song_link = models.CharField(max_length=100)
     attempted_lyrics = models.TextField(max_length=250)
-    upvotes = models.IntegerField
+    upvotes = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.song_name
+    
