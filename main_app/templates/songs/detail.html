@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Song Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ song.song_name }}</span>
+    <p>{{ song.song_name }} by {{ song.artist_name }}</p>
+    <p>Possible Lyrics: {{ song.attempted_lyrics }}</p>
+    <a href={{song.song_link}}></a>
+    {% if song.upvotes > 0 %}
+    <p>Upvotes: {{ song.upvotes }}</p>
+    {% else %}
+    <p>No One Cares About This Song</p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
