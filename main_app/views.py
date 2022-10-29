@@ -1,5 +1,6 @@
-from curses.ascii import HT
+# from curses.ascii import HT
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Song
 
 # Define the home view
@@ -21,3 +22,7 @@ def songs_detail(request, song_id):
     return render(request, 'songs/detail.html', {
         'song': song
     })
+
+class SongCreate(CreateView):
+    model = Song
+    fields = ['song_name','artist_name', 'album_name', 'song_link', 'attempted_lyrics']
