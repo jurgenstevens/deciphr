@@ -8,4 +8,6 @@ urlpatterns = [
     path('songs/<int:song_id>/', views.songs_detail, name='detail'),
     # new route used to show a form and create a cat
     path('songs/create/', views.SongCreate.as_view(), name='songs_create'),
+    path('songs/<int:pk>/update/', views.SongUpdate.as_view(), name='songs_update'),
+    path('songs/<int:pk>/delete/', views.SongDelete.as_view(), name='songs_delete'),
 ]

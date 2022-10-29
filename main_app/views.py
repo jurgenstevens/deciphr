@@ -1,6 +1,6 @@
 # from curses.ascii import HT
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Song
 
 # Define the home view
@@ -26,3 +26,12 @@ def songs_detail(request, song_id):
 class SongCreate(CreateView):
     model = Song
     fields = ['song_name','artist_name', 'album_name', 'song_link', 'attempted_lyrics']
+    success_url = '/songs/'
+
+class SongUpdate(UpdateView):
+    model = Song
+    fields = ['song_name','artist_name', 'album_name', 'song_link', 'attempted_lyrics']
+
+class SongDelete(DeleteView):
+    model = Song
+    success_url = '/songs/'
