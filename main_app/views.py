@@ -35,3 +35,5 @@ class SongUpdate(UpdateView):
 class SongDelete(DeleteView):
     model = Song
     success_url = '/songs/'
+
+    
