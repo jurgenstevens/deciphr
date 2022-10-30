@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Song
+# from .forms import CommentForm
 
 # Define the home view
 def home(request):
@@ -19,8 +20,10 @@ def songs_index(request):
 
 def songs_detail(request, song_id):
     song = Song.objects.get(id=song_id)
+    # comment_form = CommentForm()
     return render(request, 'songs/detail.html', {
-        'song': song
+        'song': song,
+        # 'comment_form': comment_form,
     })
 
 class SongCreate(CreateView):
@@ -36,4 +39,3 @@ class SongDelete(DeleteView):
     model = Song
     success_url = '/songs/'
 
-    

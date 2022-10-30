@@ -4,10 +4,11 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
+    # new route used to show a form and create, read/view update and delete songs
     path('songs/', views.songs_index, name='index'),
     path('songs/<int:song_id>/', views.songs_detail, name='detail'),
-    # new route used to show a form and create a cat
     path('songs/create/', views.SongCreate.as_view(), name='songs_create'),
     path('songs/<int:pk>/update/', views.SongUpdate.as_view(), name='songs_update'),
     path('songs/<int:pk>/delete/', views.SongDelete.as_view(), name='songs_delete'),
+    # new route used to show a form and create,read/view update and delete comments
 ]

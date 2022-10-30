@@ -23,3 +23,7 @@ footer {
 .page-footer {
     background-color: #16324F;
 }
+
+.comments {
+    border: 15px;
+}
