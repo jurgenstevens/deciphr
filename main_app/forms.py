@@ -1,7 +1,7 @@
-# from django.forms import ModelForm
-# from .models import Comment
+from django.forms import ModelForm
+from .models import Comment
 
-# class CommentForm(ModelForm):
-#     class Meta:
-#         model = Comment
-#         fields = ['song_comment', 'song']
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['song_comment']

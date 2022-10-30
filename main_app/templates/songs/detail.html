@@ -20,26 +20,26 @@
   </div>
   <br/>
   {% comment %} The form goes here {% endcomment %}
-  <form method="post">
-    {% csrf_token %} {{ feeding_form.as_p }}
-    <input type="submit" class="btn" value="Add Feeding" />
+  <form action="{% url 'add_comment' song.id %}" method="post">
+    {% csrf_token %} {{ comment_form.as_p }}
+    <input type="submit" class="btn" value="Add Comment" />
   </form>
 
   {% comment %} Below the comments will render {% endcomment %}
   <div class="card-action comments">
     <h4>Comments</h4>
-    {% if comments %}
-    {% for comment in song.comment.all %}
+    {% comment %} {% if comments %} {% endcomment %}
+    {% for comment in song.comment_set.all %}
     <div class="card">
       <div class="card-content">
         <h5>{{comment.song_comment}}</h5>
-        <p>Created at {{comment.created}}</p>
+        <p>Posted at {{comment.created}}</p>
       </div>
     </div>
     {% endfor %}
-    {% else %}
+    {% comment %} {% else %}
     <p>No comments yet.</p>
-    {% endif %}
+    {% endif %} {% endcomment %}
   </div>
 </div>
 

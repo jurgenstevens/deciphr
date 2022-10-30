@@ -1,8 +1,8 @@
 # from curses.ascii import HT
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Song
-# from .forms import CommentForm
+from .forms import CommentForm
 
 # Define the home view
 def home(request):
@@ -20,11 +20,26 @@ def songs_index(request):
 
 def songs_detail(request, song_id):
     song = Song.objects.get(id=song_id)
-    # comment_form = CommentForm()
+    comment_form = CommentForm()
     return render(request, 'songs/detail.html', {
         'song': song,
-        # 'comment_form': comment_form,
+        'comment_form': comment_form,
     })
+
+# Comment Functionality
+
+def add_comment(request, song_id):
+    # create the ModelForm using the data in request.POST
+    form = CommentForm(request.POST)
+    # validate the form
+    if form.is_valid():
+    # don't save the form to the db until it
+    # has the song_id assigned
+        new_comment = form.save(commit=False)
+        new_comment.song_id = song_id
+        new_comment.save()
+    return redirect('detail', song_id=song_id)
+
 
 class SongCreate(CreateView):
     model = Song
