@@ -29,6 +29,7 @@ class Song(models.Model):
     def get_absolute_url(self):
         return reverse("detail", kwargs={"song_id": self.id})
     
+    
 class Comment(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE)
     song_comment = models.TextField(max_length=255, null=True)

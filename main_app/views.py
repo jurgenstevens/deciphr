@@ -27,7 +27,6 @@ def songs_detail(request, song_id):
     })
 
 # Comment Functionality
-
 def add_comment(request, song_id):
     # create the ModelForm using the data in request.POST
     form = CommentForm(request.POST)
