@@ -32,7 +32,7 @@
     {% for comment in song.comment_set.all %}
     <div class="card">
       <div class="card-content">
-        <h5>{{comment.song_comment}}</h5>
+        <h6>{{comment.song_comment}}</h6>
         <p>Posted at {{comment.created}}</p>
       </div>
     </div>
