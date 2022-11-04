@@ -1,16 +1,31 @@
 from django.db import models
 from django.urls import reverse
 
+GENRES = (
+    ('P', 'Pop'),
+    ('R', 'Rock'),
+    ('RB', 'R&B'),
+    ('H', 'Hip Hop'),
+    ('J', 'Jazz'),
+    ('C', 'Country'),
+    ('T', 'Techno'),
+    ('D', 'Dubstep'),
+    ('E', 'EDM'),
+)
+
 # Create your models here.
-# class Playlist(models.Model):
-#     playlist_name = models.CharField(max_length=50)
-#     playlist_description = models.CharField(max_length=50)
+class Genre(models.Model):
+    genre_name = models.CharField(
+        max_length = 2,
+        choices=GENRES,
+        default=GENRES[0][0]
+    )
 
-#     def __str__(self):
-#         return self.playlist_name
+    def __str__(self):
+        return self.genre_name
 
-#     def get_absolute_url(self):
-#         return reverse("playlist_detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("genre_detail", kwargs={"pk": self.pk})
 
 
 class Song(models.Model):
@@ -21,6 +36,8 @@ class Song(models.Model):
     song_link = models.CharField(max_length=100)
     attempted_lyrics = models.TextField(max_length=255)
     upvotes = models.IntegerField(null=True)
+    # Add the M:M relationship
+    genre = models.ManyToManyField(Genre)
     # add user later
 
     def __str__(self):
