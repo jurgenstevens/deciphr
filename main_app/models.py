@@ -14,20 +14,6 @@ GENRES = (
 )
 
 # Create your models here.
-class Genre(models.Model):
-    genre_name = models.CharField(
-        max_length = 2,
-        choices=GENRES,
-        default=GENRES[0][0]
-    )
-
-    def __str__(self):
-        return self.genre_name
-
-    def get_absolute_url(self):
-        return reverse("genre_detail", kwargs={"pk": self.pk})
-
-
 class Song(models.Model):
     original_poster = models.CharField(max_length=100)
     song_name = models.CharField(max_length=100)
@@ -36,8 +22,6 @@ class Song(models.Model):
     song_link = models.CharField(max_length=100)
     attempted_lyrics = models.TextField(max_length=255)
     upvotes = models.IntegerField(null=True)
-    # Add the M:M relationship
-    genre = models.ManyToManyField(Genre)
     # add user later
 
     def __str__(self):
@@ -56,3 +40,18 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment created at {self.created}"
 
+
+class Genre(models.Model):
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
+    genre_name = models.CharField(
+        max_length = 2,
+        choices=GENRES,
+        default="---",
+        null=True
+    )
+
+    def __str__(self):
+        return self.genre_name
+
+    def get_absolute_url(self):
+        return reverse("genre_detail", kwargs={"pk": self.pk})

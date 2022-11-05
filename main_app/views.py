@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Song
-from .forms import CommentForm
+from .forms import CommentForm, GenreForm
 
 # Define the home view
 def home(request):
@@ -21,9 +21,11 @@ def songs_index(request):
 def songs_detail(request, song_id):
     song = Song.objects.get(id=song_id)
     comment_form = CommentForm()
+    genre_form = GenreForm()
     return render(request, 'songs/detail.html', {
         'song': song,
         'comment_form': comment_form,
+        'genre': genre_form
     })
 
 # Comment Functionality

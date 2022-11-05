@@ -7,7 +7,12 @@
     <span class="card-title">{{ song.song_name }}</span>
     <p>By {{ song.artist_name }}</p>
     <p>Possible Lyrics: {{ song.attempted_lyrics }}</p>
-    <a href={{song.song_link}}></a>
+    {% comment %} {% if song.genre %}
+    <p>Genre: {{ genre.genre_name }}</p>
+    {% else %}
+    <p>No Genre Chose</p>
+    {% endif %}
+    <a href={{song.song_link}}></a> {% endcomment %}
     {% if song.upvotes > 0 %}
     <p>Upvotes: {{ song.upvotes }}</p>
     {% else %}
@@ -28,7 +33,6 @@
   {% comment %} Below the comments will render {% endcomment %}
   <div class="card-action comments">
     <h4>Comments</h4>
-    {% comment %} {% if comments %} {% endcomment %}
     {% for comment in song.comment_set.all %}
     <div class="card">
       <div class="card-content">
@@ -37,10 +41,22 @@
       </div>
     </div>
     {% endfor %}
-    {% comment %} {% else %}
-    <p>No comments yet.</p>
-    {% endif %} {% endcomment %}
   </div>
 </div>
-
+<div class="col s6">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for genre in song.genre.all %}
+        <td>{{genre.get_genre_display}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
 {% endblock %}
