@@ -44,7 +44,7 @@ class Comment(models.Model):
 class Genre(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
     genre_name = models.CharField(
-        max_length = 2,
+        max_length=2,
         choices=GENRES,
         default="---",
         null=True

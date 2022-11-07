@@ -12,4 +12,6 @@ urlpatterns = [
     path('songs/<int:pk>/delete/', views.SongDelete.as_view(), name='songs_delete'),
     # new route used to show a form and create,read/view update and delete comments
     path('songs/<int:song_id>/add_comment/', views.add_comment, name='add_comment'),
+    # new route used to show a form and create,read/view update and delete genre
+    path('songs/<int:song_id>/add_genre/', views.add_genre, name='add_genre'),
 ]

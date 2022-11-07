@@ -25,7 +25,7 @@ def songs_detail(request, song_id):
     return render(request, 'songs/detail.html', {
         'song': song,
         'comment_form': comment_form,
-        'genre': genre_form
+        'genre_form': genre_form
     })
 
 # Comment Functionality
@@ -55,3 +55,13 @@ class SongDelete(DeleteView):
     model = Song
     success_url = '/songs/'
 
+def add_genre(request, song_id):
+    #create the ModelForm using the data in request.POST
+    form = GenreForm(request.POST)
+    #validate the form
+    if form.is_valid():
+        #don't save the form to the db until it has song_id assigned
+        new_genre = form.save(commit=False)
+        new_genre.song_id = song_id
+        new_genre.save()
+    return redirect('detail', song_id=song_id)
