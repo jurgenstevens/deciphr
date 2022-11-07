@@ -45,8 +45,8 @@ class Genre(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
     genre_name = models.CharField(
         max_length=2,
-        choices=GENRES,
-        default="---",
+            choices=GENRES,
+            default=GENRES[0][0],
         null=True
     )
 
