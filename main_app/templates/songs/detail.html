@@ -7,11 +7,6 @@
     <span class="card-title">{{ song.song_name }}</span>
     <p>By {{ song.artist_name }}</p>
     <p>Possible Lyrics: {{ song.attempted_lyrics }}</p>
-    {% if song.genre %}
-    <p>Genre: {{ genre.genre_name }}</p>
-    {% else %}
-    <p>No Genre Chose</p>
-    {% endif %}
     <a href={{song.song_link}}></a>
     {% if song.upvotes > 0 %}
     <p>Upvotes: {{ song.upvotes }}</p>
@@ -29,6 +24,21 @@
     {% csrf_token %} {{ genre_form.as_p }}
     <input type="submit" class="btn" value="Add Genre" />
   </form>
+  <div class="col s6">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Genre:</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for genre in song.genre_set.all %}
+          <td>{{genre.genre_name }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
   {% comment %} The COMMENT form goes here {% endcomment %}
   <form action="{% url 'add_comment' song.id %}" method="post">
     {% csrf_token %} {{ comment_form.as_p }}
@@ -47,21 +57,6 @@
     </div>
     {% endfor %}
   </div>
-</div>
-<div class="col s6">
-  <table class="striped">
-    <thead>
-      <tr>
-        <th>Genre</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for genre in song.genre_set.all %}
-        <td>{{genre.genre_name}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
 </div>
 </div>
 
