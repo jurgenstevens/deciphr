@@ -25,9 +25,9 @@
   </div>
   <br/>
   {% comment %} The GENRE form goes here {% endcomment %}
-  <form action="{% url 'add_genre' song.id %}" id="id_genre" method="post">
+  <form action="{% url 'add_genre' song.id %}" method="post">
     {% csrf_token %} {{ genre_form.as_p }}
-    <input type="submit" class="btn" id="id_genre" value="Add Genre" />
+    <input type="submit" class="btn" value="Add Genre" />
   </form>
   {% comment %} The COMMENT form goes here {% endcomment %}
   <form action="{% url 'add_comment' song.id %}" method="post">
@@ -57,7 +57,7 @@
     </thead>
     <tbody>
       {% for genre in song.genre_set.all %}
-        <td>{{genre}}</td>
+        <td>{{genre.genre_name}}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -66,7 +66,7 @@
 </div>
 
 <script>
-  let selectEl = document.getElementById('id_genre')
+  let selectEl = document.getElementById('id_genre_name')
   M.FormSelect.init(selectEl)
 </script>
 {% endblock %}
