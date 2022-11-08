@@ -38,6 +38,7 @@ class Comment(models.Model):
     song_comment = models.TextField(max_length=255, null=True)
     comment_upvotes = models.IntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Comment created at {self.created}"
