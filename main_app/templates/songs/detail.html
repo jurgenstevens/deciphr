@@ -13,6 +13,7 @@
     {% else %}
     <p>No One Cares About This Song... Yet.</p>
     {% endif %}
+    <p>Posted by: {{ song.user }}</p>
   </div>
   <div class="card-action">
     <a href="{% url 'songs_update' song.id %}">Edit</a>
