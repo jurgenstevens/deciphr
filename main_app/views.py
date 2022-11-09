@@ -37,6 +37,7 @@ def add_comment(request, song_id):
     # don't save the form to the db until it
     # has the song_id assigned
         new_comment = form.save(commit=False)
+        new_comment.user_id = request.user.id
         new_comment.song_id = song_id
         new_comment.save()
     return redirect('detail', song_id=song_id)
@@ -46,6 +47,13 @@ class SongCreate(CreateView):
     model = Song
     fields = ['song_name','artist_name', 'album_name', 'song_link', 'attempted_lyrics']
     success_url = '/songs/'
+
+    def form_valid(self, form):
+        # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user  # form.instance is the song
+        # Let the CreateView do its job as usual
+        return super().form_valid(form)
+
 
 class SongUpdate(UpdateView):
     model = Song
