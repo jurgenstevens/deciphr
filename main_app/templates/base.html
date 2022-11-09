@@ -30,6 +30,7 @@
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'songs_create' %}">Add A Song</a></li>
+            <li><a href="{% url 'all_songs' %}">All Songs</a></li>
             <li><a href="{% url 'index' %}">My Songs</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}

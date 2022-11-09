@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
+    path('allsongs/', views.all_songs, name='all_songs'),
     # new route used to show a form and create, read/view update and delete songs
     path('songs/', views.songs_index, name='index'),
     path('songs/<int:song_id>/', views.songs_detail, name='detail'),

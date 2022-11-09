@@ -15,8 +15,14 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def songs_index(request):
+def all_songs(request):
     songs = Song.objects.all()
+    return render(request, 'songs/all_songs.html', {
+        'all_songs' : songs
+})
+
+def songs_index(request):
+    songs = Song.objects.filter(user=request.user)
     return render(request, 'songs/index.html', {
         'songs' : songs
 })
