@@ -5,6 +5,10 @@ from .models import Song
 from .forms import CommentForm, GenreForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 
 
 # Define the home view
@@ -15,18 +19,21 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def all_songs(request):
     songs = Song.objects.all()
     return render(request, 'songs/all_songs.html', {
         'all_songs' : songs
 })
 
+@login_required
 def songs_index(request):
     songs = Song.objects.filter(user=request.user)
     return render(request, 'songs/index.html', {
         'songs' : songs
 })
 
+@login_required
 def songs_detail(request, song_id):
     song = Song.objects.get(id=song_id)
     comment_form = CommentForm()
@@ -38,6 +45,7 @@ def songs_detail(request, song_id):
     })
 
 # Comment Functionality
+@login_required
 def add_comment(request, song_id):
     # create the ModelForm using the data in request.POST
     form = CommentForm(request.POST)
@@ -52,7 +60,7 @@ def add_comment(request, song_id):
     return redirect('detail', song_id=song_id)
 
 
-class SongCreate(CreateView):
+class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
     fields = ['song_name','artist_name', 'album_name', 'song_link', 'attempted_lyrics']
     success_url = '/songs/'
@@ -64,14 +72,15 @@ class SongCreate(CreateView):
         return super().form_valid(form)
 
 
-class SongUpdate(UpdateView):
+class SongUpdate(LoginRequiredMixin, UpdateView):
     model = Song
     fields = ['song_name','artist_name', 'album_name', 'song_link', 'attempted_lyrics']
 
-class SongDelete(DeleteView):
+class SongDelete(LoginRequiredMixin, DeleteView):
     model = Song
     success_url = '/songs/'
 
+@login_required
 def add_genre(request, song_id):
     #create the ModelForm using the data in request.POST
     form = GenreForm(request.POST)
