@@ -13,9 +13,9 @@ pip3 install psycopg2-binary
 pip3 install dj_database_url
 pip3 install
 manage.py createsuperuser
-python3 manage.py makemigrations deciphr
-python3 manage.py migrate
-python3 manage.py runserver
+python manage.py makemigrations --empty deciphr
+python manage.py migrate deciphr
+python manage.py runserver
 
 if [[ $CREATE_SUPERUSER ]];
 then
