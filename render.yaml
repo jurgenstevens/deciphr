@@ -8,11 +8,11 @@ services:
     name: deciphr
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn deciphr.wsgi:application"
+    startCommand: "gunicorn mysite.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: deciphr
+          name: mysite
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
