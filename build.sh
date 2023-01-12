@@ -1,5 +1,6 @@
 BASE_DIR=$(cd "$(dirname "$0")" && pwd)
 #/bin/bash
+set -o errexit
 source /path/to/virtualenv/bin/activate
 
 # Your other commands here
