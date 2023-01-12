@@ -1,6 +1,6 @@
 BASE_DIR=$(cd "$(dirname "$0")" && pwd)
 #/bin/bash
-source /path/to/virtualenv/bin/activate
+# source /path/to/virtualenv/bin/activate
 
 # Your other commands here
 python -m pip install --upgrade pip3
