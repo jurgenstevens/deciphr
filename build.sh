@@ -15,7 +15,7 @@ pip3 install
 python manage.py createsuperuser
 python manage.py makemigrations --empty main_app
 python manage.py migrate
-python manage.py runserver
+
 
 if [[ $CREATE_SUPERUSER ]];
 then
