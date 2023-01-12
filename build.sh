@@ -17,4 +17,9 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver
 
+if [[ $CREATE_SUPERUSER ]];
+then
+  python manage.py createsuperuser --no-input
+fi
+
 export BASE_DIR
