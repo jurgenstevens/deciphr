@@ -1,3 +1,4 @@
+BASE_DIR=$(cd "$(dirname "$0")" && pwd)
 #/bin/bash
 source /path/to/virtualenv/bin/activate
 
@@ -6,3 +7,5 @@ source /path/to/virtualenv/bin/activate
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+
+export BASE_DIR
