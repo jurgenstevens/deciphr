@@ -5,7 +5,7 @@ source /path/to/virtualenv/bin/activate
 # Your other commands here
 pip install gunicorn
 pip install django
-pip install dotenv
+pip install python-dotenv
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
