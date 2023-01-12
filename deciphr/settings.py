@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'deciphr.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
+    'default': {
+        'ENGINE': str(os.getenv('DATABASE_URL'))
     #     'NAME': 'deciphr',
-    # }
-    DATABASE_URL = str(os.getenv('DATABASE_URL'))
+        # DATABASE_URL = str(os.getenv('DATABASE_URL'))
+    }
 }
 
 
