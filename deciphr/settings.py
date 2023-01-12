@@ -29,9 +29,9 @@ BASE_DIR = os.environ.get("BASE_DIR")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 PASSWORD = os.environ.get('PASSWORD')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 # USER = str(os.getenv('USER'))
 # PORT = str(os.getenv('PORT'))
-# DATABASE = str(os.getenv('DATABASE'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'deciphr',
+
 ]
 
 MIDDLEWARE = [
@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'deciphr.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-'default': dj_database_url.config(
-    default='postgresql://deciphr:{PASSWORD}@localhost:5432/deciphr',
-    conn_max_age=600
-)
+    'default': dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600
+    )
 }
 
 
