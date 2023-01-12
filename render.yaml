@@ -1,7 +1,7 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: deciphr
+    databaseName: deciphr
+    user: deciphr
 
 services:
   - type: web
