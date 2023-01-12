@@ -18,6 +18,7 @@ load_dotenv()  # loads the configs from .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
+# load_dotenv(os.path.join(BASE_DIR, '.env'))
 BASE_DIR = os.environ.get("BASE_DIR")
 
 
@@ -26,9 +27,9 @@ BASE_DIR = os.environ.get("BASE_DIR")
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+PASSWORD = os.environ.get('PASSWORD')
 # USER = str(os.getenv('USER'))
-# PASSWORD = str(os.getenv('PASSWORD'))
 # PORT = str(os.getenv('PORT'))
 # DATABASE = str(os.getenv('DATABASE'))
 
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'deciphr.wsgi.application'
 
 DATABASES = {
 'default': dj_database_url.config(
-    default='postgresql://postgres:postgres@localhost:5432/mysite',
+    default='postgresql://deciphr:{PASSWORD}@localhost:5432/deciphr',
     conn_max_age=600
 )
 }

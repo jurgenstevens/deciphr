@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+print(os.environ.get("SECRET_KEY"))
 
 
 def main():
