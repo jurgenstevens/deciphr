@@ -6,6 +6,7 @@ source /path/to/virtualenv/bin/activate
 pip install gunicorn
 pip install django
 pip install python-dotenv
+pip install psycopg2
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
