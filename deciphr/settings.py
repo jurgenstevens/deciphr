@@ -19,9 +19,6 @@ load_dotenv()  # loads the configs from .env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # load_dotenv(os.path.join(BASE_DIR, '.env'))
-# BASE_DIR = os.environ.get('BASE_DIR')
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -34,7 +31,8 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 # PORT = str(os.getenv('PORT'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = os.environ.get('DEBUG', False)
+# DEBUG = 'RENDER' not in os.environ
 # DEBUG = True
 
 ALLOWED_HOSTS = []
