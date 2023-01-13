@@ -17,9 +17,9 @@ import dj_database_url
 load_dotenv()  # loads the configs from .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.environ.get("BASE_DIR")
 # load_dotenv(os.path.join(BASE_DIR, '.env'))
-BASE_DIR = os.environ.get("BASE_DIR")
 
 
 
