@@ -4,6 +4,7 @@ BASE_DIR=$(cd "$(dirname "$0")" && pwd)
 
 # Your other commands here
 pip3 install -r requirements.txt
+pip3 install 'whitenoise[brotli]'
 pip3 install gunicorn
 pip3 install django
 pip3 install python-dotenv
