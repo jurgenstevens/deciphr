@@ -35,8 +35,8 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-# DEBUG = 'RENDER' not in os.environ
-DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = 'RENDER' not in os.environ
+# DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
