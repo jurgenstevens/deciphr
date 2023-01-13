@@ -31,9 +31,9 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 # PORT = str(os.getenv('PORT'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+# DEBUG = os.environ.get('DEBUG', False)
 # DEBUG = 'RENDER' not in os.environ
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
