@@ -17,9 +17,9 @@ import dj_database_url
 load_dotenv()  # loads the configs from .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.environ.get("BASE_DIR")
+# BASE_DIR = Path(__file__).resolve().parent.parent
 # load_dotenv(os.path.join(BASE_DIR, '.env'))
+BASE_DIR = os.environ.get("BASE_DIR")
 
 
 
@@ -34,9 +34,7 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 # PORT = str(os.getenv('PORT'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = 'RENDER' not in os.environ
-# DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
@@ -47,6 +45,7 @@ if RENDER_EXTERNAL_HOSTNAME : ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 INSTALLED_APPS = [
     'main_app',
+    'render.apps.RenderConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
